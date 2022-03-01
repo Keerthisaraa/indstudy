@@ -1,0 +1,4 @@
+Things to do:
+	- Use `create-react-app` to initialize a project, installing dependencies like react-query, react-router, material ui etc
+	- Setup a docker environment for databases (MSSQl, MySQL, SQLite, MongoDB)
+	- Setup backend using fastapi
