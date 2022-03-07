@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD="{{PASSWORD}}"
+      - MYSQL_USER="{{USER}}"
+      - MYSQL_PASSWORD="{{PASSWORD}}"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: "4.0G"
+  
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER="{{USER}}"
+      - POSTGRES_PASSWORD="{{PASSWORD}}"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: "4.0G"
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server
+    restart: always
+    ports:
+      - '1433:1433'
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD="{{PASSWORD}}"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: "4.0G"
+    
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
