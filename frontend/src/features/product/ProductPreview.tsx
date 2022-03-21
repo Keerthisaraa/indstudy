@@ -1,17 +1,25 @@
 import React from 'react';
-import { ProductPreviewType } from './types';
-import { Paper, Stack, Typography } from '@mui/material';
+import { ProductType } from './types';
+import { Stack, Typography } from '@mui/material';
 
-function ProductPreview({ product }: { product: ProductPreviewType }) {
+function ProductPreview({ product }: { product: ProductType }) {
 	return (
-		<Stack direction='column'>
+		<Stack direction='column' style={{ width: '10vw', margin: 10 }}>
 			<img
-				src={product.image}
-				alt={product.name}
-				style={{ height: 200, width: 200 }}
+				src={product.image.split('|')[0]}
+				alt={product.product_name}
+				style={{ objectFit: 'cover', maxHeight: 150 }}
+				// style={{ height: 200, width: 200 }}
 			></img>
-			<Typography variant='subtitle2'>{product.name}</Typography>
-			<Typography variant='subtitle1'>${product.price}</Typography>
+			<Typography
+				variant='subtitle2'
+				style={{ overflow: 'hidden', color: '#007185', lineHeight: 1.25 }}
+			>
+				{product.product_name.length > 50
+					? product.product_name.slice(0, 50) + '...'
+					: product.product_name}
+			</Typography>
+			<Typography variant='h6'>${product.selling_price}</Typography>
 		</Stack>
 	);
 }

@@ -1,36 +1,37 @@
 version: '3.8'
 services:
 
-  mysql:
+  mysqlDocker:
     image: mysql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password --secure_file_priv=""
     ports:
-      - '3306:3306'
+      - '127.0.0.1:3306:3306'
     environment:
-      - MYSQL_ROOT_PASSWORD="{{PASSWORD}}"
-      - MYSQL_USER="{{USER}}"
-      - MYSQL_PASSWORD="{{PASSWORD}}"
+      MYSQL_ROOT_PASSWORD: "${PASSWORD}"
+      MYSQL_DATABASE: "${DB}"
     deploy:
       resources:
         limits:
           cpus: "2.0"
           memory: "4.0G"
   
-  postgres:
+  postgresDocker:
     image: postgres
     restart: always
     ports:
       - '5432:5432'
     environment:
-      - POSTGRES_USER="{{USER}}"
-      - POSTGRES_PASSWORD="{{PASSWORD}}"
+      POSTGRES_USER: "${USER}"
+      POSTGRES_PASSWORD: "${PASSWORD}"
+      POSTGRES_DB: "${DB}"
     deploy:
       resources:
         limits:
           cpus: "2.0"
           memory: "4.0G"
 
-  mssql:
+  mssqlDocker:
     image: mcr.microsoft.com/mssql/server
     restart: always
     ports:

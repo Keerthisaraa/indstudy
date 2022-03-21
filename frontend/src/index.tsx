@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HomePage from './pages/HomePage';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import App from './App';
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<HomePage />
-		</Provider>
+		<QueryClientProvider client={queryClient}>
+			<Provider store={store}>
+				<App />
+			</Provider>
+		</QueryClientProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
