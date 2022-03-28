@@ -23,10 +23,9 @@ class ProductCategory(SQLModel, table=True):
 
 class User(SQLModel, table=True):
     __tablename__ = "users"
-    id: str = Field(primary_key=True)
+    email: str = Field(primary_key=True)
     name: str
-    age: int
-    gender: str
+    password: str
 
 
 class Order(SQLModel, table=True):

@@ -7,7 +7,7 @@ export function useGetRandomProducts(count: number, token: string = 'test') {
 		['randomProducts', token],
 		() => getRandomProducts(count, token),
 		{
-			refetchInterval: Infinity,
+			staleTime: Infinity,
 		}
 	);
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProductType } from './types';
-import { Stack, Typography } from '@mui/material';
+import { Stack, Link, Typography } from '@mui/material';
 
 function ProductPreview({ product }: { product: ProductType }) {
 	return (
@@ -11,14 +11,15 @@ function ProductPreview({ product }: { product: ProductType }) {
 				style={{ objectFit: 'cover', maxHeight: 150 }}
 				// style={{ height: 200, width: 200 }}
 			></img>
-			<Typography
+			<Link
 				variant='subtitle2'
 				style={{ overflow: 'hidden', color: '#007185', lineHeight: 1.25 }}
+				underline='hover'
 			>
 				{product.product_name.length > 50
 					? product.product_name.slice(0, 50) + '...'
 					: product.product_name}
-			</Typography>
+			</Link>
 			<Typography variant='h6'>${product.selling_price}</Typography>
 		</Stack>
 	);

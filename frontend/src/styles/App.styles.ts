@@ -11,6 +11,7 @@ html{
 }
 body{
     background-color: ${BackgroundColor};
+	height: 100%;
 	}
 }
 `;
