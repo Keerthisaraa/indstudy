@@ -4,6 +4,8 @@ import { selectUser } from '../features/user/userSlice';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Badge from '@mui/material/Badge';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -15,6 +17,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import { stringAvatar } from '../utils';
+import { useNavigate } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -61,6 +65,7 @@ export default function PrimarySearchAppBar() {
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
 	const { user } = useSelector(selectUser);
+	const navigate = useNavigate();
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -145,6 +150,7 @@ export default function PrimarySearchAppBar() {
 						noWrap
 						component='div'
 						sx={{ display: { xs: 'none', sm: 'block' } }}
+						onClick={() => navigate('/')}
 					>
 						Shop Here
 					</Typography>
@@ -159,17 +165,32 @@ export default function PrimarySearchAppBar() {
 					</Search>
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-						<IconButton
-							size='large'
-							edge='end'
-							aria-label='account of current user'
-							aria-controls={menuId}
-							aria-haspopup='true'
-							onClick={handleProfileMenuOpen}
-							color='inherit'
-						>
-							<Avatar {...stringAvatar(user.full_name)} />
-						</IconButton>
+						<Stack direction='row' spacing={2}>
+							<IconButton
+								size='small'
+								edge='end'
+								aria-label='account of current user'
+								color='inherit'
+							>
+								<Badge badgeContent={4} color='secondary'>
+									<ShoppingCartIcon />
+								</Badge>
+							</IconButton>
+							<IconButton
+								size='small'
+								edge='end'
+								aria-label='account of current user'
+								aria-controls={menuId}
+								aria-haspopup='true'
+								onClick={handleProfileMenuOpen}
+								color='inherit'
+							>
+								<Avatar
+									{...stringAvatar(user.full_name)}
+									style={{ height: 30, width: 30, fontSize: 14 }}
+								/>
+							</IconButton>
+						</Stack>
 					</Box>
 					<Box sx={{ display: { xs: 'flex', md: 'none' } }}>
 						<IconButton

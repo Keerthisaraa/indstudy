@@ -94,7 +94,7 @@ const LoginView = () => {
 			<Grid item alignItems='center' justifyContent='center'>
 				<Button
 					type='submit'
-					style={{ width: textBoxWidth / 2, backgroundColor: PrimaryColor }}
+					style={{ width: textBoxWidth / 2 }}
 					variant='contained'
 					color='primary'
 					onClick={submitLogin}

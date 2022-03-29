@@ -3,8 +3,7 @@ import { Stack, Paper, Button, Typography } from '@mui/material';
 import { useGetRandomCategories } from './hooks';
 
 function CategoryBar() {
-	const { data } = useGetRandomCategories(10);
-	console.log(data);
+	const { data } = useGetRandomCategories(15);
 	return (
 		<Paper style={{ backgroundColor: '#232F3D' }}>
 			<Stack

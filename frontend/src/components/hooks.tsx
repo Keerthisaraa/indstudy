@@ -6,7 +6,7 @@ export function useGetRandomCategories(count: number, token: string = 'test') {
 		['randomCategories', token],
 		() => getRandomCategories(count, token),
 		{
-			refetchInterval: Infinity,
+			staleTime: Infinity,
 		}
 	);
 }

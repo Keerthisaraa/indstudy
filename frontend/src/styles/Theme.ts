@@ -1,11 +1,11 @@
 import darkScrollbar from '@mui/material/darkScrollbar';
 import { createTheme } from '@mui/material/styles';
-import { PrimaryColor, PrimaryFont, SecondaryColor } from '../constant';
+import { PrimaryDarkColor, PrimaryFont, SecondaryColor } from '../constant';
 
 const THEME = createTheme({
 	palette: {
 		primary: {
-			main: PrimaryColor,
+			main: PrimaryDarkColor,
 		},
 		secondary: {
 			main: SecondaryColor,
