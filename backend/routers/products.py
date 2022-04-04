@@ -1,9 +1,9 @@
 from typing import List
 
 from fastapi import APIRouter
-from sqlmodel import Session, create_engine, func, select
+from sqlmodel import Session, func, select
 
-from cfg_loader import SERVER_URL
+from db import engine
 from schema import Product
 
 router = APIRouter()
@@ -11,7 +11,6 @@ router = APIRouter()
 
 @router.get("/products/random", tags=["products"])
 def random(count: int):
-    engine = create_engine(SERVER_URL)
     stmt = select(Product).order_by(func.rand()).limit(count)
 
     products: List[Product] = []
@@ -20,3 +19,10 @@ def random(count: int):
             products.append(row[0])
 
     return products
+
+
+# @router.get("/products/categories", tags=["products"])
+# def categories(category: str, count: int):
+#     session.query(Product).join(ProductCategory).filter(
+#         Product.id == ProductCategory.id, ProductCategory.category == category
+#     ).all()

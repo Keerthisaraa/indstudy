@@ -33,7 +33,7 @@ def check_password(username: str, password: str) -> Dict:
 
 
 @router.post("/login", tags=["auth"])
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = check_password(form_data.username, form_data.password)
 
     access_token_expires = timedelta(minutes=60)
