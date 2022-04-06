@@ -1,5 +1,6 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import cartReducer from '../features/cart/cartSlice';
+import homeReducer from '../features/home/homeSlice';
 import productReducer from '../features/product/productSlice';
 import userReducer from '../features/user/userSlice';
 
@@ -8,6 +9,7 @@ export const store = configureStore({
 		product: productReducer,
 		user: userReducer,
 		cart: cartReducer,
+		home: homeReducer,
 	},
 });
 

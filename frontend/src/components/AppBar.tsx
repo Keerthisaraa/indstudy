@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../features/user/userSlice';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -19,6 +19,7 @@ import Avatar from '@mui/material/Avatar';
 import { stringAvatar } from '../utils';
 import { useNavigate } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { setMode, setSearchTerm } from '../features/home/homeSlice';
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -61,6 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+	const dispatch = useDispatch();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -161,6 +163,10 @@ export default function PrimarySearchAppBar() {
 						<StyledInputBase
 							placeholder='Search…'
 							inputProps={{ 'aria-label': 'search' }}
+							onChange={(event: any) =>
+								dispatch(setSearchTerm(event.target.value))
+							}
+							onBlur={() => dispatch(setMode('search'))}
 						/>
 					</Search>
 					<Box sx={{ flexGrow: 1 }} />

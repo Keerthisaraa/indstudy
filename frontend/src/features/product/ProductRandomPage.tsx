@@ -1,11 +1,9 @@
 import React from 'react';
 import { Container, Grid, Paper } from '@mui/material';
-import { useGetRandomProducts } from './hooks';
 import ProductPreview from './ProductPreview';
+import { ProductType } from './types';
 
-function ProductRandomPage() {
-	const randomProducts = useGetRandomProducts(100);
-
+function ProductRandomPage({ products }: { products: Array<ProductType> }) {
 	return (
 		<Container style={{ marginTop: 25 }}>
 			<Paper>
@@ -16,8 +14,8 @@ function ProductRandomPage() {
 					alignItems='center'
 					justifyContent='center'
 				>
-					{randomProducts.data &&
-						randomProducts.data
+					{products &&
+						products
 							.filter((product) => product.selling_price > 0)
 							.map((product) => (
 								<Grid item>
