@@ -21,6 +21,7 @@ Faker = "^13.3.3"
 pymssql = "^2.2.4"
 psycopg2 = "^2.9.3"
 pyodbc = "^4.0.32"
+locust = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
 ipykernel = "^6.9.2"
