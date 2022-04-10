@@ -4,7 +4,6 @@ import { login } from '../features/user/api';
 import { setLoginData } from '../features/user/userSlice';
 import { Grid, Typography, TextField, Button } from '@mui/material';
 import AmazonLogo from '../assets/logo.png';
-import { PrimaryColor } from '../constant';
 
 const LoginView = () => {
 	const textBoxWidth = 250;
@@ -22,6 +21,8 @@ const LoginView = () => {
 		const { token, user } = data;
 		const userObject = {
 			//@ts-ignore
+			user_id: user.id,
+			//@ts-ignore
 			email_id: user.email_id,
 			//@ts-ignore
 			full_name: user.full_name,
@@ -38,7 +39,7 @@ const LoginView = () => {
 			alignItems='center'
 			spacing={1}
 			justifyContent='center'
-			style={{ height: '100%' }}
+			style={{ height: '80%' }}
 		>
 			<Grid
 				item
@@ -46,14 +47,14 @@ const LoginView = () => {
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
-					top: '40%',
+					top: '20%',
 				}}
 			>
 				<img
 					src={AmazonLogo}
 					className='imgLogo'
 					alt=''
-					style={{ width: 250, height: 125 }}
+					style={{ width: 300, height: 300 }}
 				/>
 			</Grid>
 			<Grid item>

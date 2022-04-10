@@ -1,7 +1,5 @@
-# from sqlalchemy import Column, DateTime, Float, Integer, String
-# from sqlalchemy.ext.declarative import declarative_base
+import datetime
 
-# Base = declarative_base()
 from sqlmodel import Field, SQLModel
 
 
@@ -23,20 +21,22 @@ class ProductCategory(SQLModel, table=True):
 
 class User(SQLModel, table=True):
     __tablename__ = "users"
-    email: str = Field(primary_key=True)
+    id: str = Field(primary_key=True)
+    email: str
     name: str
     password: str
 
 
 class Order(SQLModel, table=True):
     __tablename__ = "orders"
-    id: str = Field(primary_key=True)
+    order_id: str = Field(primary_key=True)
     user_id: str
-    total: float
+    order_date: datetime.datetime
+    order_status: str
 
 
-class OrderProduct(SQLModel, table=True):
-    __tablename__ = "order_products"
+class OrderDetail(SQLModel, table=True):
+    __tablename__ = "order_details"
     order_id: str = Field(primary_key=True)
     product_id: str = Field(primary_key=True)
-    count: int
+    quantity: int

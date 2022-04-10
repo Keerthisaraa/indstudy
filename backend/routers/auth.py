@@ -29,7 +29,7 @@ def check_password(username: str, password: str) -> Dict:
 
     session = Session(engine)
     user = session.scalars(stmt).one()
-    return {"email_id": user.email, "full_name": user.name}
+    return {"id": user.id, "email_id": user.email, "full_name": user.name}
 
 
 @router.post("/login", tags=["auth"])

@@ -1,4 +1,4 @@
-import { SecondaryColor } from './constant';
+import { PrimaryColor } from './constant';
 
 export function stringToColor(string: string) {
 	let hash = 0;
@@ -23,7 +23,7 @@ export function stringToColor(string: string) {
 export function stringAvatar(name: string) {
 	return {
 		sx: {
-			bgcolor: SecondaryColor,
+			bgcolor: PrimaryColor,
 		},
 		children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
 	};

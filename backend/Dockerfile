@@ -7,11 +7,8 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 	poetry config virtualenvs.create false 
 
 # Prod
-COPY ./ ./app 
+COPY ./ ./
 WORKDIR /app
-
-# Dev
-# COPY poetry.lock* pyproject.toml server.cfg ./
 
 RUN poetry install --no-root --no-dev
 

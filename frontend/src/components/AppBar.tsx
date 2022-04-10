@@ -145,20 +145,20 @@ export default function PrimarySearchAppBar() {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position='static'>
+			<AppBar position='static' sx={{ bgcolor: '#131921' }}>
 				<Toolbar>
 					<Typography
 						variant='h6'
 						noWrap
 						component='div'
-						sx={{ display: { xs: 'none', sm: 'block' } }}
+						sx={{ display: { xs: 'none', sm: 'block', color: 'white' } }}
 						onClick={() => navigate('/')}
 					>
 						Shop Here
 					</Typography>
 					<Search>
 						<SearchIconWrapper>
-							<SearchIcon />
+							<SearchIcon sx={{ color: 'white' }} />
 						</SearchIconWrapper>
 						<StyledInputBase
 							placeholder='Search…'
@@ -166,17 +166,24 @@ export default function PrimarySearchAppBar() {
 							onChange={(event: any) =>
 								dispatch(setSearchTerm(event.target.value))
 							}
+							sx={{ color: 'white' }}
 							onBlur={() => dispatch(setMode('search'))}
 						/>
 					</Search>
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-						<Stack direction='row' spacing={2}>
+						<Stack direction='row' spacing={2} alignItems='center'>
+							<Typography
+								sx={{ color: 'white' }}
+								onClick={() => navigate('/orders')}
+							>
+								Orders
+							</Typography>
 							<IconButton
 								size='small'
 								edge='end'
 								aria-label='account of current user'
-								color='inherit'
+								sx={{ color: 'white' }}
 							>
 								<Badge badgeContent={4} color='secondary'>
 									<ShoppingCartIcon />
