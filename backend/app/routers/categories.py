@@ -13,12 +13,13 @@ router = APIRouter()
 def random(count: int):
     engine = create_engine(SERVER_URL)
     categories: List[str] = []
+    random_function = func.random() if "postgres" in SERVER_URL else func.rand()
 
     with Session(engine) as session:
         for value in (
             session.query(ProductCategory.category)
             .distinct()
-            .order_by(func.rand())
+            .order_by(random_function)
             .limit(count)
         ):
             categories.append(value[0])

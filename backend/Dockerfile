@@ -7,10 +7,10 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 	poetry config virtualenvs.create false 
 
 # Prod
-COPY ./ ./
-WORKDIR /app
+COPY ./app ./app
+# WORKDIR /app
 
-RUN poetry install --no-root --no-dev
+# RUN poetry install --no-root --no-dev
 
 # CMD [ \
 # 	"watchmedo", \

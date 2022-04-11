@@ -16,3 +16,5 @@ elif RUN_MODE == "MSSQL":
     SERVER_URL = MSSQL_URL
 else:
     SERVER_URL = POSTGRES_URL
+
+print(SERVER_URL)

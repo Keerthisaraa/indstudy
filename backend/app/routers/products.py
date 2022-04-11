@@ -1,8 +1,9 @@
 from typing import List
 
 from fastapi import APIRouter
-from sqlmodel import Session, func, or_, select
+from sqlmodel import Session, func, select
 
+from cfg_loader import SERVER_URL
 from db import engine
 from schema import Product
 
@@ -20,7 +21,8 @@ def get_products(stmt):
 
 @router.get("/products/random", tags=["products"])
 def random(count: int):
-    stmt = select(Product).order_by(func.rand()).limit(count)
+    random_function = func.random() if "postgres" in SERVER_URL else func.rand()
+    stmt = select(Product).order_by(random_function).limit(count)
     return get_products(stmt)
 
 

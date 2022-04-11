@@ -8,7 +8,8 @@ from utils import clean_data
 
 if __name__ == "__main__":
     df, product_categories = clean_data(Path("./data/amazon_dataset.csv"))
-    dbs = [MYSQL_URL, MSSQL_URL, POSTGRES_URL]
+    # dbs = [MYSQL_URL, MSSQL_URL, POSTGRES_URL]
+    dbs = [MYSQL_URL, POSTGRES_URL]
     for db in dbs:
         engine = create_engine(db)
 
